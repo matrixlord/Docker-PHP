@@ -1,0 +1,33 @@
+version: '3'
+
+services:
+  server:
+    image: php:apache
+    container_name: app_server
+    volumes:
+      - /data/www:/var/www/html
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+    networks:
+      app_net:
+  db:
+    image: mariadb:10.4
+    container_name: app_db
+    volumes:
+      - /data/db:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+    networks:
+      app_net:
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: app_phpmyadmin
+    ports:
+      - 8080:80
+    environment:
+      PMA_HOST: db
+      PHP_UPLOAD_MAX_FILESIZE: 67108864
+    networks:
+      app_net:
+networks:
+  app_net:
