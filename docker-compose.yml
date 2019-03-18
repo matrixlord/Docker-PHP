@@ -3,18 +3,18 @@ version: '3'
 services:
   server:
     image: php:apache
+    ports:
+      - 80:80
     container_name: app_server
     volumes:
-      - /data/www:/var/www/html
-    environment:
-      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      - ./data/www:/var/www/html
     networks:
       app_net:
   db:
     image: mariadb:10.4
     container_name: app_db
     volumes:
-      - /data/db:/var/lib/mysql
+      - ./data/db:/var/lib/mysql
     environment:
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
     networks:
