@@ -1,3 +1,6 @@
+# Warning
+[This one is better and newer.](https://github.com/SocialNerds/PHP-Docker-Starter-Pack)
+
 # Docker for PHP
 
 A very lightweight, in terms of maintenance, docker configuration for PHP.
